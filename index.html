@@ -1,38 +1,755 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profil Mahasiswa</title>
-  <style>
-    body {font-family: Arial, sans-serif; background:#eef2f7; margin:0; color:#1e293b}
-    header {background:#164e63; color:white; text-align:center; padding:28px}
-    main {max-width:760px; margin:24px auto; background:white; padding:24px; border-radius:12px}
-    h2 {color:#0e7490}
-    footer {text-align:center; padding:16px}
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Website Profil Mahasiswa</h1>
-    <p>Praktik Administrasi Website</p>
-  </header>
-  <main>
-    <h2>Profil Singkat</h2>
-    <img src="foto.jpg"
-     alt="Foto Profil Mahasiswa"
-     width="150">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nur Aziza | Student Portfolio</title>
 
-    <p>Halo, saya [Nur aziza]. Saya sedang belajar memublikasikan website.</p>
-    <h2>Informasi</h2>
-    <ul>
-      <li>Program Studi: Informatika</li>
-      <li>Mata Kuliah: Administrasi Website</li>
-      <li>Topik: Hosting dan publikasi website</li>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --pink: #f43f86;
+  --pink-dark: #c2185b;
+  --pink-light: #fff0f6;
+  --text: #253653;
+  --white: #ffffff;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #fffafd;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* NAVIGASI */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 17px 7%;
+  background: #ffffffed;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 3px 20px #be185d0d;
+  backdrop-filter: blur(12px);
+}
+
+.logo {
+  font-size: 24px;
+  color: var(--pink);
+  font-weight: 800;
+}
+
+.logo span {
+  display: block;
+  color: #718096;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.menu {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.menu a {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  transition: .3s;
+}
+
+.menu a:hover {
+  color: var(--pink);
+}
+
+/* BERANDA */
+.hero {
+  min-height: 510px;
+  padding: 65px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 45px;
+  flex-wrap: wrap;
+  background:
+    radial-gradient(ellipse at 80% 30%, #ffd8e8 0, transparent 45%),
+    linear-gradient(130deg, #fff0f6, #fffafd 65%, #ffe4ef);
+  overflow: hidden;
+}
+
+.hero-content {
+  flex: 1;
+  min-width: 280px;
+  animation: fadeUp .9s ease both;
+}
+
+.pill {
+  display: inline-block;
+  padding: 7px 17px;
+  background: white;
+  color: var(--pink-dark);
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 20px #f43f8610;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 5vw, 65px);
+  line-height: 1.15;
+  letter-spacing: -2px;
+  margin-bottom: 12px;
+}
+
+.hero h1 span {
+  color: var(--pink);
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+
+.hero h2 {
+  color: #52647d;
+  font-size: 22px;
+  margin-bottom: 18px;
+}
+
+.hero p {
+  max-width: 470px;
+  color: #58677d;
+  margin-bottom: 25px;
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 23px;
+  border-radius: 50px;
+  font-weight: 700;
+  transition: .3s;
+}
+
+.btn-primary {
+  color: white;
+  background: linear-gradient(120deg, #fb7185, #ec4899);
+  box-shadow: 0 8px 20px #f43f8630;
+}
+
+.btn-outline {
+  color: var(--pink-dark);
+  border: 1.5px solid #f9a8d4;
+  background: white;
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+}
+
+/* FOTO PROFIL */
+.hero-photo {
+  flex: 0 1 360px;
+  text-align: center;
+  position: relative;
+}
+
+.photo-frame {
+  background: white;
+  padding: 12px 12px 45px;
+  border-radius: 15px;
+  transform: rotate(3deg);
+  box-shadow: 0 20px 45px #be185d25;
+  transition: .4s;
+}
+
+.photo-frame:hover {
+  transform: rotate(0) scale(1.03);
+}
+
+.photo-frame img {
+  display: block;
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 9px;
+}
+
+.photo-caption {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  color: var(--pink);
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 19px;
+}
+
+.sticker {
+  position: absolute;
+  top: -22px;
+  left: -25px;
+  background: #f9a8d4;
+  color: white;
+  padding: 9px 16px;
+  border-radius: 12px;
+  transform: rotate(-10deg);
+  font-weight: bold;
+}
+
+/* BAGIAN KONTEN */
+section.content {
+  padding: 65px 7%;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 38px;
+}
+
+.section-heading small {
+  color: var(--pink-dark);
+  background: #fce7f3;
+  padding: 7px 15px;
+  border-radius: 30px;
+  font-weight: 700;
+}
+
+.section-heading h2 {
+  margin-top: 14px;
+  font-size: clamp(27px, 4vw, 37px);
+  color: var(--text);
+}
+
+.section-heading p {
+  color: #78869b;
+  margin-top: 5px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.about-text h3 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.about-text h3 span {
+  color: var(--pink);
+}
+
+.about-text p {
+  color: #64748b;
+  margin-bottom: 16px;
+}
+
+.quote {
+  color: var(--pink-dark);
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 19px;
+  padding: 15px 0;
+}
+
+.profile-box {
+  background: white;
+  border: 1px solid #fce7f3;
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: 0 10px 35px #be185d0d;
+}
+
+.profile-row {
+  display: grid;
+  grid-template-columns: 42px 110px 12px 1fr;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 5px;
+  border-bottom: 1px solid #fce7f3;
+  font-size: 14px;
+}
+
+.profile-row:last-child {
+  border-bottom: none;
+}
+
+.profile-icon {
+  background: #fce7f3;
+  color: var(--pink-dark);
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  font-size: 18px;
+}
+
+.profile-row strong {
+  color: var(--pink-dark);
+  font-weight: 600;
+}
+
+/* KARTU */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 23px;
+}
+
+.card {
+  background: white;
+  padding: 28px;
+  border: 1px solid #fce7f3;
+  border-radius: 22px;
+  box-shadow: 0 8px 30px #be185d0b;
+  transition: .35s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::after {
+  content: "♡";
+  position: absolute;
+  right: 12px;
+  top: -8px;
+  font-size: 65px;
+  color: #fce7f3;
+  z-index: 0;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 35px #be185d18;
+}
+
+.card-icon {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: #fce7f3;
+  font-size: 27px;
+  margin-bottom: 18px;
+}
+
+.card h3 {
+  font-size: 20px;
+  margin-bottom: 7px;
+  position: relative;
+  z-index: 1;
+}
+
+.card p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.chip {
+  padding: 5px 12px;
+  background: #fff0f6;
+  color: #be185d;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 30px;
+}
+
+/* TUJUAN */
+.goal-box {
+  background: linear-gradient(130deg, #ffe4ef, #fff6fa, #fce7f3);
+  border: 1px solid #fbcfe8;
+  border-radius: 25px;
+  padding: 38px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.goal-box h2 {
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+
+.goal-box p {
+  color: #64748b;
+}
+
+.goal-list {
+  list-style: none;
+}
+
+.goal-list li {
+  background: #ffffffc9;
+  padding: 12px 15px;
+  border-radius: 12px;
+  margin: 9px 0;
+  font-size: 14px;
+}
+
+.goal-list li span {
+  color: var(--pink);
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+/* FOOTER */
+footer {
+  background: #334155;
+  color: white;
+  padding: 38px 7% 20px;
+  text-align: center;
+}
+
+footer h2 {
+  color: #f9a8d4;
+  font-family: Georgia, serif;
+  margin-bottom: 7px;
+}
+
+footer p {
+  font-size: 13px;
+  color: #e2e8f0;
+  margin: 5px 0;
+}
+
+.footer-line {
+  height: 1px;
+  background: #ffffff25;
+  margin: 22px 0 15px;
+}
+
+/* ANIMASI */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIF */
+@media (max-width: 900px) {
+  .hero {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .hero p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+
+  .hero-photo {
+    width: 320px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .menu {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .menu a {
+    font-size: 12px;
+  }
+
+  .hero {
+    padding: 45px 22px;
+  }
+
+  .hero-photo {
+    max-width: 290px;
+  }
+
+  .photo-frame img {
+    height: 290px;
+  }
+
+  section.content {
+    padding: 45px 20px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-row {
+    grid-template-columns: 38px 90px 8px 1fr;
+    gap: 5px;
+    font-size: 12px;
+  }
+
+  .goal-box {
+    grid-template-columns: 1fr;
+    padding: 25px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="#beranda" class="logo">
+    ♡ Nur Aziza
+    <span>MAHASISWA INFORMATIKA</span>
+  </a>
+
+  <div class="menu">
+    <a href="#beranda">⌂ Beranda</a>
+    <a href="#profil">♡ Profil</a>
+    <a href="#informasi">▤ Informasi</a>
+    <a href="#tujuan">◎ Tujuan</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="beranda">
+  <div class="hero-content">
+    <span class="pill">👋 Halo, selamat datang!</span>
+
+    <h1>Saya <span>Nur Aziza</span> ♡</h1>
+    <h2>Mahasiswa Informatika</h2>
+
+    <p>
+      Selamat datang di website profil saya.
+      Saya sedang belajar memublikasikan website
+      sebagai bagian dari praktik mata kuliah
+      Administrasi Website.
+    </p>
+
+    <div class="buttons">
+      <a href="#profil" class="btn btn-primary">
+        Kenali Saya →
+      </a>
+
+      <a href="#informasi" class="btn btn-outline">
+        Lihat Profil ♡
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-photo">
+    <div class="sticker">♡ My Portfolio</div>
+
+    <div class="photo-frame">
+      <img src="foto.jpeg" alt="Foto profil Nur Aziza">
+      <div class="photo-caption">Small Steps, Big Dreams ✨</div>
+    </div>
+  </div>
+</header>
+
+<!-- TENTANG SAYA -->
+<section class="content" id="profil">
+  <div class="about-grid">
+
+    <div class="about-text">
+      <span class="pill">🌷 Tentang Saya</span>
+
+      <h3>Mengenal Saya <span>Lebih Dekat ♡</span></h3>
+
+      <p>
+        Saya adalah mahasiswa Informatika yang tertarik
+        dengan teknologi, pengembangan website, dan
+        berbagai hal baru di dunia digital.
+      </p>
+
+      <p>
+        Saya percaya bahwa dengan belajar dan berproses,
+        kita dapat terus mengembangkan kemampuan diri
+        dan meraih tujuan yang diinginkan.
+      </p>
+
+      <div class="quote">
+        “Terus belajar, terus berkembang.” 💗
+      </div>
+    </div>
+
+    <div class="profile-box" id="informasi">
+      <div class="profile-row">
+        <div class="profile-icon">♙</div>
+        <span>Nama</span>
+        <strong>:</strong>
+        <span>Nur Aziza</span>
+      </div>
+
+      <div class="profile-row">
+        <div class="profile-icon">🎓</div>
+        <span>Program Studi</span>
+        <strong>:</strong>
+        <span>Informatika</span>
+      </div>
+
+      <div class="profile-row">
+        <div class="profile-icon">📖</div>
+        <span>Mata Kuliah</span>
+        <strong>:</strong>
+        <span>Administrasi Website</span>
+      </div>
+
+      <div class="profile-row">
+        <div class="profile-icon">💻</div>
+        <span>Topik</span>
+        <strong>:</strong>
+        <span>Hosting dan Publikasi Website</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- KEAHLIAN DAN KEPRIBADIAN -->
+<section class="content" style="background:#fff3f8">
+  <div class="section-heading">
+    <small>♡ MY PERSONAL SPACE ♡</small>
+    <h2>Hal yang Saya Sukai</h2>
+    <p>Minat, keterampilan, dan semangat saya untuk terus belajar.</p>
+  </div>
+
+  <div class="cards">
+
+    <article class="card">
+      <div class="card-icon">🎓</div>
+      <h3>Informasi Mahasiswa</h3>
+      <p>Mahasiswa Informatika yang sedang belajar
+      membuat dan mengelola website.</p>
+
+      <div class="chips">
+        <span class="chip">Informatika</span>
+        <span class="chip">Mahasiswa</span>
+        <span class="chip">Pembelajaran</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">💻</div>
+      <h3>Minat dan Keahlian</h3>
+      <p>Hal-hal yang ingin saya pelajari dan
+      kembangkan dalam bidang teknologi.</p>
+
+      <div class="chips">
+        <span class="chip">Web Development</span>
+        <span class="chip">HTML</span>
+        <span class="chip">CSS</span>
+        <span class="chip">Kreativitas</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">🌸</div>
+      <h3>Kepribadian Saya</h3>
+      <p>Terus berusaha menjadi pribadi yang
+      disiplin, kreatif, dan mau berkembang.</p>
+
+      <div class="chips">
+        <span class="chip">Disiplin</span>
+        <span class="chip">Kreatif</span>
+        <span class="chip">Semangat</span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- TUJUAN -->
+<section class="content" id="tujuan">
+  <div class="goal-box">
+
+    <div>
+      <span class="pill">🎯 My Learning Goals</span>
+      <h2>Tujuan Pembelajaran</h2>
+
+      <p>
+        Website ini dibuat sebagai latihan untuk
+        memahami dasar pengembangan web, pengelolaan
+        hosting, dan proses publikasi website agar
+        dapat diakses melalui internet.
+      </p>
+    </div>
+
+    <ul class="goal-list">
+      <li><span>✓</span> Memahami HTML dan CSS.</li>
+      <li><span>✓</span> Mempelajari cara mengunggah website.</li>
+      <li><span>✓</span> Memahami layanan hosting.</li>
+      <li><span>✓</span> Membuat website responsif.</li>
+      <li><span>✓</span> Mengembangkan keterampilan teknologi.</li>
     </ul>
-    <h2>Tujuan</h2>
-    <p>Halaman ini dibuat sebagai latihan mengunggah HTML ke layanan hosting.</p>
-  </main>
-  <footer>Website latihan mahasiswa — 2026</footer>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <h2>♡ Nur Aziza ♡</h2>
+  <p>Mahasiswa Informatika | Website Profil Mahasiswa</p>
+  <p><i>“Mimpi butuh proses, dan proses butuh semangat.”</i></p>
+
+  <div class="footer-line"></div>
+
+  <p>© 2026 Nur Aziza. Dibuat dengan ♡ dan semangat belajar.</p>
+</footer>
+
 </body>
 </html>
